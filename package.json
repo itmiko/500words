@@ -1,12 +1,12 @@
 {
-  "name": "optimizedhtml",
+  "name": "500words",
   "version": "3.0.0",
-  "description": "OptimizedHTML - Start HTML Template",
+  "description": "500 words for a week",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "WebDesign Master",
+  "author": "itmiko",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.23.6",
