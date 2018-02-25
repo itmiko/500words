@@ -25,26 +25,66 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
 
 	<link rel="stylesheet" href="css/main.min.css">
-
+	<!--<script src="libs/vue/vue.js"></script>-->
+	<style>
+	</style>
 </head>
-
 <body>
+<div id="app">
 
-	<div class="container">
-
-		<div class="row justify-content-center">
-
-			<div class="col-8">
-				
-				<img class="img-responsive" src="img/500words.jpg" alt="500 words">
-				<button class="btn btn-warning">Cancel</button>
+	<section class="row">
+		<div class="small-6 columns">
+			<h1 class="text-center">YOU</h1>
+			<div class="healthbar">
+				<div 
+					class="healthbar text-center"
+					style='background-color: green; margin: 0;color: white;'
+					:style="{width: playerHealth + '%'}">
+					{{ playerHealth }}
+				</div>
 			</div>
-			
 		</div>
 
-	</div>
+		<div class="small-6 columns">
+			<h1 class="text-center">MONSTER</h1>
+			<div class="healthbar">
+				<div 
+					class="healthbar text-center"
+					style='background-color: green; margin: 0;color: white;'
+					:style="{width: monsterHealth + '%'}">
+					{{ monsterHealth }}
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<script src="js/scripts.min.js"></script>
+	<section class="row controls" v-if="!gameIsRunning">
+		<div class="small-12 columns">
+			<button id="start-game" @click="startGame">START NEW GAME</button>
+		</div>
+	</section>
+
+	<section class="row controls" v-else>
+		<div class="small-12 columns">
+			<button id="attack" @click="attack">ATTACK</button>
+			<button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+			<button id="heal" @click="heal">HEAL</button>
+			<button id="give-up" @click="giveUp">GIVE UP</button>
+		</div>
+	</section>
+
+	<section class="row log" >
+		<div class="small-12 columns">
+			<ul>
+				<li v-for="turn in turns"
+					:class="{'player-turn' : turn.isPlayer, 'monster-turn' : !turn.isPlayer}">
+					{{ turn.text }}
+				</li>
+			</ul>
+		</div>
+	</section>
+</div>
+<script src="js/scripts.min.js"></script>
 
 </body>
 </html>
